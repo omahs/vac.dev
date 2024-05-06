@@ -1,0 +1,98 @@
+---
+title: 'Verifying RLN Proofs in Light Clients with Subtrees'
+date: 2024-05-03 12:00:00
+authors: marvin
+published: false
+slug: rln-light-verifiers
+categories: research
+
+toc_min_heading_level: 2
+toc_max_heading_level: 4
+---
+# Blog 4 - Verkle Trees
+
+## Outline
+
+- Introduction/Motivation
+    - History
+    - Why
+        - Issues with $k$-nary Merkle trees
+    - Tools
+- High Level Outline
+- In terms of KZG
+- In terms of IPA
+
+## Introduction
+Merkle trees have been the backbone of cryptocurrencies' ledgers.
+TODO
+
+Unfortunately, Merkle trees have an issue with scaling.
+
+
+
+Verkle trees offer a solution to this issue by replacing hash functions with polynomial commitment schemes (PCSs).
+
+## Background
+
+## $k$-nary trees
+A tree is a special graph that does not have any cycles.
+That is, it is impossible to find a path that starts and ends at the same node without repeating an edge.
+(TODO: graph)
+
+A (complete) $k$-nary tree, as depicted in Figure TODO, is a graph where each parent node has exactly $k$ children.
+Each node in a tree has at most one parent node.
+The root node is the only node in the tree that does not have a parent.
+Leaf nodes are nodes that have no children.
+
+A $k$-nary tree with $k^\ell$ leaves can be parsed into $\ell+1$ layers.
+For convenience, layer 0 consists of leaves and layer $\ell$ consists of the root node.
+
+TODO: mathematically, how many nodes are givcen on each layer?
+
+
+## Hash Functions
+
+To construct a tree that compresses $k^\ell$ elements, then it is critical to have a special mapping that compresses $k$ elements into a single element.
+For Merkle trees this is done with a hash function, and for Verkle trees this is done with a polynomial commitment scheme (PCS).
+We review PCSs later.
+For the time being, we review the desired properties of a hash function that are critical for Merkle trees.
+
+We write $hash$ to denote a hash function. The desired properties of $hash$ are:
+
+- $hash$ should be easy to compute.
+- It should be 'impossible' to find two different inputs that hash to the same value.
+Mathematically, this means $hash(x_0) \neq hash(x_1)$ for $x_0 \neq x_1$.
+- It should be 'impossible' to find a value that hashes to a given output.
+That is, given $y$, it is impossible to find $x$ so that $hash(x) == y$.
+
+### $k$-nary Merkle Trees
+We begin our discussion with an exposition of $k$-nary Merkle trees.
+In practice, Merkle trees are often depicted as binary trees ($k=2$).
+
+
+Suppose that $k$ is an integer larger than 1; $k > 1$. 
+Let $h$ be a cryptographic hash function.
+Let $D$ be the digest that we will commit to with a Merkle tree.
+For the sake of presentation, we assume that $D$ has $k^\ell$ entries.
+
+#### Construction
+Suppose that the digest $D_0$ contains $k^\ell$ items.
+We can group elements of $D_0$ into $k^{\ell-1}$ subdigests where each subdigest consists of $k$ elements.
+Let $D_{0,0}$, ..., $D_{0,k^{\ell-1}-1}$ denote the subdigests of $D_0$.
+
+### Proof of Membership
+
+
+### Problems
+
+A Merkle tree can be 
+
+
+
+# Verkle Trees
+
+Verkle trees solve the problem**s** (TODO) with $k$-nary Merkle trees by replacing hash functions with a commitment scheme.
+
+## Verkle Trees with KZG
+
+## Verkle Trees with IPA
